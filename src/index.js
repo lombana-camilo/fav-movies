@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "./config/firebase.js"
+//redux 
+// import firebase from "firebase/compat/app";
+// import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+// import { createFirestoreInstance } from "redux-firestore";
+import store from "./store/store.js";
+
+
+// const rrfProps = {
+//    firebase,
+//    config:app,
+//    dispatch:store.dispatch,
+//    createFirestoreInstance,
+// }
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Provider store={store}>
+        {/* <ReactReduxFirebaseProvider {...rrfProps}> */}
+          <App />
+        {/* </ReactReduxFirebaseProvider> */}
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
