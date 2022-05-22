@@ -1,14 +1,17 @@
-import { NavLink } from "react-router-dom";
-const SignedInLinks = () => {
-  return (
-    <div>
-      <ul className="text-focus flex  space-x-5">
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/favourites">Sign Up</NavLink></li>
-        <li><NavLink to="/loggedout">Log In</NavLink></li>
-      </ul>
-    </div>
-  );
-};
+import { useNavigate } from "react-router-dom";
+import { signOut, getAuth } from "firebase/auth";
 
-export default SignedInLinks;
+const LogOut = () => {
+   const navigate = useNavigate()
+   const logout = ()=>{
+      const auth = getAuth();
+      signOut(auth)
+      .then(()=> navigate("/"))
+      .catch(e=> console.log(e.message))
+   }
+   return (
+   <button onClick={logout}>Log Out</button>     
+   )
+}
+
+export default LogOut

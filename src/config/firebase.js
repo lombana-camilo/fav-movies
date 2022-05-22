@@ -14,9 +14,9 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
-//Init firestore service
+//Init firestore services
 //database conector
 export const db = getFirestore();
 
 //Reference to specific collections
-export const favMoviesRef = collection(db, "favMovies");
+// export const favMoviesRef = collection(db, "favMovies");

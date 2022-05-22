@@ -1,22 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchDetails } from "./../../store/movies/apiFunctions.js";
-import { addDoc, deleteDoc, doc, setDoc } from "firebase/firestore";
-import { favMoviesRef, db } from "./../../config/firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "./../../config/firebase";
 
 const MovieDetails = () => {
   const { movieDetails } = useSelector((state) => state.movies);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(fetchDetails(id));
   }, [dispatch, id]);
 
   const addToFav = async () => {
-      //using setDoc to custom the document's id
-      await setDoc(doc(db,"favMovies",id),{...movieDetails})
+      await updateDoc(doc(db,"users",user.uid),{favMovies:arrayUnion(movieDetails)})
   };
 
   return (

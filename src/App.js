@@ -6,8 +6,32 @@ import LogIn from "./components/auth/LogIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
 import Favourites from "./components/movies/Favourites";
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { login, logout } from "./store/user/user-slice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //Check if a user is logged and sync user store to firestore
+    const auth = getAuth();
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            username: userAuth.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
+
   return (
     <div className="bg-bg h-screen text-primary">
       <Navbar />

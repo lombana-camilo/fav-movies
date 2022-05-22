@@ -1,17 +1,32 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import validateForm from "./validateForm.js";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
 const LogIn = () => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
   const [login, setLogin] = useState({ email: "", password: "" });
   const [error, setError] = useState({ email: "", password: "" });
+  const [logMessage, setLogMessage] = useState({ error: "", success: "" });
+  const navigate = useNavigate()
 
   const handleSignin = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
   useEffect(() => setError(validateForm(login)), [login]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+      const auth = getAuth()
+      signInWithEmailAndPassword(auth, login.email, login.password)
+      .then(cred =>{
+            setLogMessage({success:`Welcome ${cred.user.email}`})
+            setTimeout(()=>{
+               navigate("/favourites")
+            },1000)
+         })
+      .catch(e=> setLogMessage({error:e.message}))
+  };
+
   return (
     <form
       onSubmit={onSubmit}
@@ -38,7 +53,11 @@ const LogIn = () => {
         />
             {error.password && login.password && ( <span className="text-focus text-xs flex absolute">{error.password}</span>)}
       </label>
-      <button className="bg-secondary w-44 ">Login</button>
+         <div>
+            <button className="bg-secondary w-44 ">Login</button>
+            {logMessage.error && ( <span className="text-focus text-xs flex absolute">{logMessage.error}</span>)}
+            {logMessage.success && ( <span className="text-secondary text-base flex absolute">{logMessage.success}</span>)}
+         </div>
     </form>
   );
 };
