@@ -35,14 +35,15 @@ const SignUp = () => {
             favMovies: [],
           }).then(() => {
             setLogMessage({ success: `Welcome ${cred.user.displayName}` });
-            setTimeout(() => navigate("/"), 500);
+            setTimeout(() => {
+              navigate("/");
+              (window.location.href = window.location.href)
+            },700);
           });
         });
       })
       .catch((e) => setLogMessage({ error: e.message }));
-      // Window.location.reload();
   };
-
 
   return (
     <form
