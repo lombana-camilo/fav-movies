@@ -37,7 +37,7 @@ const SignUp = () => {
             setLogMessage({ success: `Welcome ${cred.user.displayName}` });
             setTimeout(() => {
               navigate("/");
-              (window.location.href = window.location.href)
+              (window.location.href = window.location)
             },700);
           });
         });

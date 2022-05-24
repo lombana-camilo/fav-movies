@@ -6,6 +6,7 @@ export const moviesSlice = createSlice({
     moviesList: [],
     favouriteMovies: [],
     movieDetails: [],
+    status: "",
   },
   reducers: {
     //No need to mutate code! no return needed - emmer makes copies under the hood
@@ -26,5 +27,6 @@ export const moviesSlice = createSlice({
 
 //CreateSlice creates an action creater for each of the functions inside the reducers
 //  hover over getMovies!
-export const { setMoviesList, setMovieDetails, setFavourites } = moviesSlice.actions;
+export const { setMoviesList, setMovieDetails, setFavourites } =
+  moviesSlice.actions;
 export default moviesSlice.reducer;

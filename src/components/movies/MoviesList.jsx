@@ -15,9 +15,13 @@ const MoviesList = () => {
       <SearchBar setSearchInput={setSearchInput} onSearch={onSearch} />
 
       <div className="flex flex-wrap">
-        {moviesList.map((m) => (
-          <MovieCard title={m.Title} img={m.Poster} year={m.Year} id={m.imdbID} key={m.imdbID}/>
-        ))}
+            { moviesList ?
+            moviesList.map((m) => (
+               <MovieCard title={m.Title} img={m.Poster} year={m.Year} id={m.imdbID} key={m.imdbID}/>
+            ))
+            :
+            <h1 className="text-focus w-full text-center">No Movies Found...</h1>
+         }
       </div>
     </div>
   );

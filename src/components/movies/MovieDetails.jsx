@@ -1,39 +1,34 @@
+import FavouriteButtons from "./FavouriteButtons";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchDetails } from "./../../store/movies/apiFunctions.js";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { db } from "./../../config/firebase";
 
 const MovieDetails = () => {
-  const { movieDetails, favouriteMovies } = useSelector((state) => state.movies);
+  const { movieDetails, favouriteMovies } = useSelector(
+    (state) => state.movies
+  );
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { user } = useSelector((state) => state.user);
+  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
     dispatch(fetchDetails(id));
-  }, [dispatch, id]);
-
-  const addToFav = async (e) => {
-if (!favouriteMovies.find(m=> m["imdbID"] === movieDetails.imdbID)) {
-         await updateDoc(doc(db,"users",user.uid),{favMovies:arrayUnion(movieDetails)})
-}
-  };
+    if (favouriteMovies.find((m) => m["imdbID"] === id)) {
+      setIsFav(() => true);
+    }
+  }, [dispatch, id, favouriteMovies, isFav]);
 
   return (
-    <div className="absolute top-16">
-      <h1>Details</h1>
-      <h1>{movieDetails.Title}</h1>
-      <img src={movieDetails.Poster} alt="Poster" />
-         {user ?
-         <button onClick={addToFav} className="bg-focus">
-            Add to Favourites
-         </button>
-         :
-         <span className="text-focus">Sign in to Add to Favourites</span>
-      }
-      <p> {movieDetails.Plot} </p>
+    <div className="absolute top-24 flex flex-col h-3/4">
+      <h1 className="w-full text-center font-bold text-5xl">{movieDetails.Title}</h1>
+         <div className="flex">
+            <img src={movieDetails.Poster} alt="Poster" className="h-full w-1/3"/>
+            <p> {movieDetails.Plot} </p>
+         </div>
+         <div className="relative">
+            <FavouriteButtons imdbID={id} />
+         </div>
     </div>
   );
 };
