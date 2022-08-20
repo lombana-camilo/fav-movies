@@ -7,7 +7,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.user);
   return (
     <>
-      <nav className="bg-bg font-bold p-2 flex justify-around fixed w-full">
+      <nav className="bg-nav font-bold p-2 flex justify-around fixed w-full z-20">
         <Link to="/">
           <h1 className="text-3xl hidden md:block"> Fav Movies</h1>
         </Link>

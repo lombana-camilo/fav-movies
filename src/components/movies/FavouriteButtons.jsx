@@ -37,7 +37,7 @@ const FavouriteButtons = ({ imdbID }) => {
   };
 
   return (
-    <div className="flex text-xs text-secondary absolute top-0 w-full bg-nav bg-opacity-80 h-1/6 items-center justify-evenly hover:font-bold">
+    <div className="flex text-xs text-secondary top-0 bg-nav bg-opacity-80 h-1/6 items-center justify-evenly hover:font-bold">
       {user ? ( isFav ? <div onClick={(e) => removeFav(e.target.id)} className="hover:cursor-pointer" id={imdbID} > Remove from Favourites </div> 
             : ( <div onClick={(e) => addToFav(e.target.id)} className="hover:cursor-pointer" id={imdbID} > Add to Favourites </div>))
             : ( <span className="text-focus">Log in to access Favourites</span>)}

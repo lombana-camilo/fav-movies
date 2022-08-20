@@ -1,7 +1,7 @@
 const SearchBar = ({ setSearchInput, onSearch }) => {
   return (
-    <div className="flex justify-center">
-      <form className="relative top-12 mb-12 pl-6  text-center bg-primary w-3/4 md:w-2/4 rounded-2xl opacity-90 flex justify-between">
+    <div className="flex right-4 md:right-1/4 items-center top-14 fixed z-20 w-3/4 md:w-2/4">
+      <form className="relative pl-6  bg-primary w-full  rounded-2xl opacity-90 flex justify-between">
         <input
           className="bg-transparent bg-none w-2/4 md:w-5/6 focus:outline-none text-bg"
           type="text"

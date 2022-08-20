@@ -1,7 +1,7 @@
 # Fav-Movies app
 
 A react app that allows the user to search for movies, see their details and add or remove them to a favourite list.
-The user can create its account, log in and have access to its own favourite list
+The user can create its account, log-in and have access to its own favourite list
 
 ## Project Layout
 The following flowchart was used in order to structure the project throughout its creation process
@@ -13,7 +13,7 @@ The following flowchart was used in order to structure the project throughout it
 * Javasript
 * React, react-router
 * Tailwind
-* Axios
+* Redux
 
 ### `API`
 
@@ -26,7 +26,7 @@ Redux Toolkit was used to configure and access a global storage
 
 ### `Firebase`
 
-The firebase database *Firestore* served as the backend for this project. The user information and their favorite movies get stored here
+The firebase database *Firestore* served as the back-end for this project. The user information and their favorite movies get stored here
 
 
 ## Current Progress
@@ -38,5 +38,5 @@ The firebase database *Firestore* served as the backend for this project. The us
 - [x] Create Firebase store and sync with redux
 - [x] Authentication dynamic forms
 - [x] Create interactivity add/remove to Favourites
-- [ ] Responsive design
+- [x] Responsive design
 

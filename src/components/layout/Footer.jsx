@@ -5,7 +5,7 @@ const emailLink = "mailto:lombana.camilo@hotmail.com";
 
 const Footer = () => {
   return (
-    <div className="w-screen flex absolute bottom-3 justify-center">
+    <div className="w-screen flex fixed bottom-3 justify-center">
       <div className="flex opacity-80 justify-around bg-gray-600 text-gray-400 w-11/12 p-3 rounded-xl ">
         <p>Camilo Lombana &copy; 2022</p>
         <div className="flex">

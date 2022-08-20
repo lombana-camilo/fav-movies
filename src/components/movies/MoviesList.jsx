@@ -11,17 +11,24 @@ const MoviesList = () => {
   const onSearch = () => dispatch(fetchMovies(searchInput));
 
   return (
-    <div >
+    <div className="flex relative h-fit pb-24">
       <SearchBar setSearchInput={setSearchInput} onSearch={onSearch} />
+      <span className="h-screen"></span>
 
-      <div className="flex flex-wrap px-16 ">
-            { moviesList ?
-            moviesList.map((m) => (
-               <MovieCard title={m.Title} img={m.Poster} year={m.Year} id={m.imdbID} key={m.imdbID}/>
-            ))
-            :
-            <h1 className="text-focus w-full text-center">No Movies Found...</h1>
-         }
+      <div className="flex flex-wrap z-0 mt-24 justify-center h-fit">
+        {moviesList ? (
+          moviesList.map((m) => (
+            <MovieCard
+              title={m.Title}
+              img={m.Poster}
+              year={m.Year}
+              id={m.imdbID}
+              key={m.imdbID}
+            />
+          ))
+        ) : (
+          <h1 className="text-focus w-full text-center">No Movies Found...</h1>
+        )}
       </div>
     </div>
   );

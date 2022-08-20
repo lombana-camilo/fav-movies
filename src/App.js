@@ -51,7 +51,7 @@ function App() {
   }, [dispatch, user]);
 
   return (
-    <div className="bg-bg h-screen text-primary">
+    <div className="bg-bg max-h-fit  text-primary">
       <Navbar />
       <Routes>
         <Route path="/" element={<MoviesList />} />
