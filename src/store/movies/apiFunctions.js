@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setMoviesList, setMovieDetails } from "./movies-slice.js";
-const URL = "http://www.omdbapi.com/";
-const KEY = "fd962533";
+const URL = process.env.REACT_APP_URL
+const KEY = process.env.REACT_APP_KEY
 
 export const fetchMovies = (search) => (dispatch) => {
   const config = { params: { s: search, apikey: KEY } };
