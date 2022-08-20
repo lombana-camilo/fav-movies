@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       <nav className="bg-bg font-bold p-2 flex justify-around fixed w-full">
         <Link to="/">
-          <h1 className="text-3xl"> Video App </h1>
+          <h1 className="text-3xl hidden md:block"> Fav Movies</h1>
         </Link>
         {user ? <SignedInLinks user={user}/> : <SignedOutLinks />}
       </nav>

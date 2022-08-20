@@ -37,18 +37,18 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-      //Sync favmovies from firestore
-      try {
-    // Reference to doc with user id
-    const favMoviesRef = doc(db, "users", user.uid);
-    //RealTime collection data SnapShot (instead of getDocs), callback executes when collection changes
-    onSnapshot(favMoviesRef, (snapshot) => {
-         if (snapshot.data().favMovies) {
-            dispatch(setFavourites(snapshot.data().favMovies));
-         }
-    });
-      } catch (e) { }
-  }, [dispatch,user]);
+    //Sync favmovies from firestore
+    try {
+      // Reference to doc with user id
+      const favMoviesRef = doc(db, "users", user.uid);
+      //RealTime collection data SnapShot (instead of getDocs), callback executes when collection changes
+      onSnapshot(favMoviesRef, (snapshot) => {
+        if (snapshot.data().favMovies) {
+          dispatch(setFavourites(snapshot.data().favMovies));
+        }
+      });
+    } catch (e) {}
+  }, [dispatch, user]);
 
   return (
     <div className="bg-bg h-screen text-primary">

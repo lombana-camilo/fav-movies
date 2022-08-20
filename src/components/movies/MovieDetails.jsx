@@ -20,15 +20,31 @@ const MovieDetails = () => {
   }, [dispatch, id, favouriteMovies, isFav]);
 
   return (
-    <div className="absolute top-24 flex flex-col h-3/4">
-      <h1 className="w-full text-center font-bold text-5xl">{movieDetails.Title}</h1>
-         <div className="flex">
-            <img src={movieDetails.Poster} alt="Poster" className="h-full w-1/3"/>
-            <p> {movieDetails.Plot} </p>
-         </div>
-         <div className="relative">
-            <FavouriteButtons imdbID={id} />
-         </div>
+    <div className="absolute top-24 flex flex-col h-3/4 mx-36">
+      <h1 className="w-full text-center font-bold text-5xl p-4"> {movieDetails.Title} </h1>
+      <div className="flex items-start">
+        <img src={movieDetails.Poster} alt="Poster" className="h-full w-1/3" />
+        <div className="flex flex-col">
+          <p className="p-16"> {movieDetails.Plot} </p>
+               <div className="flex justify-around">
+                  <div>
+                     <h3>imdb Rating</h3>
+                     <p>{movieDetails.imdbRating}</p>
+                  </div>
+                  <div>
+                     <h3>Director</h3>
+                     <p>{movieDetails.Director}</p>
+                  </div>
+                  <div>
+                     <h3>Language</h3>
+                     <p>{movieDetails.Language}</p>
+                  </div>
+               </div>
+        </div>
+      </div>
+      <div className="text-focus">
+        <FavouriteButtons imdbID={id} />
+      </div>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const LogIn = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex flex-col justify-around inset-y-64 inset-x-1/3 absolute top-36">
+      className="flex flex-col justify-around inset-y-64 inset-x-1/4 md:inset-x-1/3 absolute top-36">
       <h5 className="text-2xl font-bold justify-center">Sign In</h5>
       <label> Email
         <input
@@ -54,7 +54,7 @@ const LogIn = () => {
             {error.password && login.password && ( <span className="text-focus text-xs flex absolute">{error.password}</span>)}
       </label>
          <div>
-            <button className="bg-secondary w-44 ">Login</button>
+            <button className="bg-secondary w-full ">Login</button>
             {logMessage.error && ( <span className="text-focus text-xs flex absolute">{logMessage.error}</span>)}
             {logMessage.success && ( <span className="text-secondary text-base flex absolute">{logMessage.success}</span>)}
          </div>

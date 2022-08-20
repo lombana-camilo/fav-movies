@@ -26,6 +26,7 @@ const SignUp = () => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, signup.email, signup.password)
       .then((cred) => {
+            console.log({cred})
         updateProfile(cred.user, { displayName: signup.username }).then(() => {
           //Creating firebase document
           setDoc(doc(db, "users", cred.user.uid), {
@@ -48,7 +49,7 @@ const SignUp = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex flex-col justify-around inset-y-64 inset-x-1/3 absolute top-36"
+      className="flex flex-col justify-around inset-y-64 inset-x-1/4 md:inset-x-1/3 absolute top-36"
     >
       <h5 className="text-2xl font-bold">Sign Up</h5>
       <label>
@@ -95,7 +96,7 @@ const SignUp = () => {
       <div>
         <button
           disabled={error.email || error.password}
-          className="bg-secondary disabled:bg-focus"
+          className="bg-secondary disabled:bg-focus w-full"
         >
           SignUp
         </button>

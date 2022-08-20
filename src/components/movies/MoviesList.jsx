@@ -11,10 +11,10 @@ const MoviesList = () => {
   const onSearch = () => dispatch(fetchMovies(searchInput));
 
   return (
-    <div>
+    <div >
       <SearchBar setSearchInput={setSearchInput} onSearch={onSearch} />
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap px-16 ">
             { moviesList ?
             moviesList.map((m) => (
                <MovieCard title={m.Title} img={m.Poster} year={m.Year} id={m.imdbID} key={m.imdbID}/>

@@ -16,7 +16,7 @@ const FavouriteButtons = ({ imdbID }) => {
   },[favouriteMovies,imdbID,movieDetails]);
 
   const addToFav = async (movieID) => {
-    //Try because movieDetails should update first
+    //TryCatch because movieDetails should update first
     try {
       dispatch(fetchDetails(movieID));
     } catch (e) { console.log(e) }
