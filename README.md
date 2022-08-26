@@ -14,6 +14,7 @@ The following flowchart was used in order to structure the project throughout it
 * React, react-router
 * Tailwind
 * Redux
+* Firebase, FireStore
 
 ### `API`
 
